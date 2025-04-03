@@ -68,11 +68,11 @@ enum combos {
   onetwo_CAPS,
 };
 
-const uint16_t PROGMEM qw_combo[] = {KC_Q, KC_W), COMBO_END};
-const uint16_t PROGMEM er_combo[] = {KC_E, KC_R), COMBO_END};
-const uint16_t PROGMEM op_combo[] = {KC_O, KC_P), COMBO_END};
-const uint16_t PROGMEM ui_combo[] = {KC_U, KC_I), COMBO_END};
-const uint16_t PROGMEM onetwo_combo[] = {KC_1, KC_2), COMBO_END};
+const uint16_t PROGMEM qw_combo[] = {KC_Q, KC_W, COMBO_END};
+const uint16_t PROGMEM er_combo[] = {KC_E, KC_R, COMBO_END};
+const uint16_t PROGMEM op_combo[] = {KC_O, KC_P, COMBO_END};
+const uint16_t PROGMEM ui_combo[] = {KC_U, KC_I, COMBO_END};
+const uint16_t PROGMEM onetwo_combo[] = {KC_1, KC_2, COMBO_END};
 
 combo_t key_combos[] = {
   [QW_TAB] = COMBO(qw_combo, KC_TAB),
