@@ -64,16 +64,28 @@ layer_state_t layer_state_set_user(layer_state_t state) {
 
 #ifdef COMBO_ENABLE
 enum combos {
-  QW_TAB,
-  OP_ESC,
+  AS_TAB,
+  DF_LNG1,
+  SCLNL_ESC,
+  KJ_LNG2,
+  MCOMM_BTN1,
+  QUOTEEQ_CAPS,
 };
 
-const uint16_t PROGMEM qw_combo[] = {KC_Q, KC_W, COMBO_END};
-const uint16_t PROGMEM op_combo[] = {KC_O, KC_P, COMBO_END};
+const uint16_t PROGMEM as_combo[] = {LSFT_T(KC_A), LCTL_T(KC_S), COMBO_END};
+const uint16_t PROGMEM df_combo[] = {LALT_T(KC_D), LGUI_T(KC_F), COMBO_END};
+const uint16_t PROGMEM sclnl_combo[] = {RSFT_T(KC_SCLN), RCTL_T(KC_L), COMBO_END};
+const uint16_t PROGMEM kj_combo[] = {RALT_T(KC_K), RGUI_T(KC_J), COMBO_END};
+const uint16_t PROGMEM mcomm_combo[] = {KC_M, KC_COMM, COMBO_END};
+const uint16_t PROGMEM quoteeql_combo[] = {LSFT_T(KC_QUOT), LCTL_T(KC_EQL), COMBO_END};
 
 combo_t key_combos[] = {
-  [QW_TAB] = COMBO(qw_combo, KC_TAB),
-  [OP_ESC] = COMBO(op_combo, KC_ESC),
+  [AS_TAB] = COMBO(as_combo, KC_TAB),
+  [DF_LNG1] = COMBO(df_combo, KC_LNG1),
+  [SCLNL_ESC] = COMBO(sclnl_combo, KC_ESC),
+  [KJ_LNG2] = COMBO(kj_combo, KC_LNG2),
+  [MCOMM_BTN1] = COMBO(mcomm_combo, MS_BTN1),
+  [QUOTEEQ_CAPS] = COMBO(quoteeql_combo, KC_CAPS),
 };
 #endif
 
