@@ -5,5 +5,3 @@ OLED_ENABLE = yes
 VIA_ENABLE = yes
 
 COMBO_ENABLE = yes
-
-MOUSEKEY_ENABLE = yes

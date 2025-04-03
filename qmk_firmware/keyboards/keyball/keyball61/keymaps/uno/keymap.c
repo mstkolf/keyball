@@ -68,7 +68,6 @@ enum combos {
   DF_LNG1,
   SCLNL_ESC,
   KJ_LNG2,
-  MCOMM_BTN1,
   QUOTEEQ_CAPS,
 };
 
@@ -76,7 +75,6 @@ const uint16_t PROGMEM as_combo[] = {LSFT_T(KC_A), LCTL_T(KC_S), COMBO_END};
 const uint16_t PROGMEM df_combo[] = {LALT_T(KC_D), LGUI_T(KC_F), COMBO_END};
 const uint16_t PROGMEM sclnl_combo[] = {RSFT_T(KC_SCLN), RCTL_T(KC_L), COMBO_END};
 const uint16_t PROGMEM kj_combo[] = {RALT_T(KC_K), RGUI_T(KC_J), COMBO_END};
-const uint16_t PROGMEM mcomm_combo[] = {KC_M, KC_COMM, COMBO_END};
 const uint16_t PROGMEM quoteeql_combo[] = {LSFT_T(KC_QUOT), LCTL_T(KC_EQL), COMBO_END};
 
 combo_t key_combos[] = {
@@ -84,7 +82,6 @@ combo_t key_combos[] = {
   [DF_LNG1] = COMBO(df_combo, KC_LNG1),
   [SCLNL_ESC] = COMBO(sclnl_combo, KC_ESC),
   [KJ_LNG2] = COMBO(kj_combo, KC_LNG2),
-  [MCOMM_BTN1] = COMBO(mcomm_combo, MS_BTN1),
   [QUOTEEQ_CAPS] = COMBO(quoteeql_combo, KC_CAPS),
 };
 #endif
