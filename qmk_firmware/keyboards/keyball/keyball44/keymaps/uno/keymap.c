@@ -62,23 +62,23 @@ layer_state_t layer_state_set_user(layer_state_t state) {
 #ifdef COMBO_ENABLE
 enum combos {
   QW_TAB,
-  ER_LNG1,
   OP_ESC,
-  UI_LNG2,
+  QUEQ_LNG1,
+  RIPM_LNG2,
   onetwo_CAPS,
 };
 
 const uint16_t PROGMEM qw_combo[] = {KC_Q, KC_W, COMBO_END};
-const uint16_t PROGMEM er_combo[] = {KC_E, KC_R, COMBO_END};
 const uint16_t PROGMEM op_combo[] = {KC_O, KC_P, COMBO_END};
-const uint16_t PROGMEM ui_combo[] = {KC_U, KC_I, COMBO_END};
+const uint16_t PROGMEM queq_combo[] = {KC_QUOT, LCTL_T(KC_EQL), COMBO_END};
+const uint16_t PROGMEM ripm_combo[] = {RCTL_T(KC_RIGHT), RGUI_T(KC_PMNS), COMBO_END};
 const uint16_t PROGMEM onetwo_combo[] = {KC_1, KC_2, COMBO_END};
 
 combo_t key_combos[] = {
   [QW_TAB] = COMBO(qw_combo, KC_TAB),
-  [ER_LNG1] = COMBO(er_combo, KC_LNG1),
   [OP_ESC] = COMBO(op_combo, KC_ESC),
-  [UI_LNG2] = COMBO(ui_combo, KC_LNG2),
+  [QUEQ_LNG1] = COMBO(queq_combo, KC_LNG1),
+  [RIPM_LNG2] = COMBO(ripm_combo, KC_LNG2),
   [onetwo_CAPS] = COMBO(onetwo_combo, KC_CAPS),
 };
 #endif
