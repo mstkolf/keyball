@@ -52,11 +52,23 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   ),
 };
 // clang-format on
+// layer_state_t layer_state_set_user(layer_state_t state) {
+//     // Auto enable scroll mode when the highest layer is 3
+//     keyball_set_scroll_mode(get_highest_layer(state) == 3);
+//     return state;
+// }
 layer_state_t layer_state_set_user(layer_state_t state) {
-    // Auto enable scroll mode when the highest layer is 3
-    keyball_set_scroll_mode(get_highest_layer(state) == 3);
+    if (get_highest_layer(state) == 3) {
+        keyball_set_scroll_mode(true);
+        keyball_set_scrollsnap_mode(KEYBALL_SCROLLSNAP_MODE_VERTICAL);
+    } else {
+        keyball_set_scroll_mode(false);
+        // snap modeは切っておく（デフォルト戻し）
+        keyball_set_scrollsnap_mode(KEYBALL_SCROLLSNAP_MODE_FREE);
+    }
     return state;
 }
+
 
 #ifdef COMBO_ENABLE
 enum combos {
