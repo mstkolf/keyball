@@ -295,18 +295,20 @@ report_mouse_t pointing_device_driver_get_report(report_mouse_t rep) {
     // }
     // return rep;
 
-    if (should_report()) {
-        bool is_left = is_keyboard_left();           // 自分が左側か？
-        bool reverse = keyball_get_scroll_reverse(); // スクロールレイヤーか？
-
-        bool this_is_scroll = (reverse ^ is_left);
-        bool that_is_scroll = (reverse ^ !is_left);
-
+    if (is_keyboard_master() && should_report()) {
+        bool is_left = is_keyboard_left();
+        bool layer3  = get_highest_layer(layer_state) == 3;
+    
+        // 通常: 左手はスクロール、右手はマウス
+        // Layer3: 左手はマウス、右手はスクロール
+        bool this_is_scroll = (layer3 ^ is_left);
+        bool that_is_scroll = (layer3 ^ !is_left);
+    
         motion_to_mouse(&keyball.this_motion, &rep, is_left, this_is_scroll);
         motion_to_mouse(&keyball.that_motion, &rep, !is_left, that_is_scroll);
-
-    keyball.last_mouse = rep;
-}
+    
+        keyball.last_mouse = rep;
+    }
 }
 
 //////////////////////////////////////////////////////////////////////////////
