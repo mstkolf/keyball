@@ -264,6 +264,16 @@ static inline bool should_report(void) {
     return true;
 }
 
+static bool keyball_scroll_reversed = false;
+
+void keyball_set_scroll_reverse(bool enabled) {
+    keyball_scroll_reversed = enabled;
+}
+
+bool keyball_get_scroll_reverse(void) {
+    return keyball_scroll_reversed;
+}
+
 report_mouse_t pointing_device_driver_get_report(report_mouse_t rep) {
     // fetch from optical sensor.
     if (keyball.this_have_ball) {
@@ -276,14 +286,27 @@ report_mouse_t pointing_device_driver_get_report(report_mouse_t rep) {
         }
     }
     // report mouse event, if keyboard is primary.
-    if (is_keyboard_master() && should_report()) {
-        // modify mouse report by PMW3360 motion.
-        motion_to_mouse(&keyball.this_motion, &rep, is_keyboard_left(), keyball.scroll_mode);
-        motion_to_mouse(&keyball.that_motion, &rep, !is_keyboard_left(), keyball.scroll_mode ^ keyball.this_have_ball);
-        // store mouse report for OLED.
-        keyball.last_mouse = rep;
-    }
-    return rep;
+    // if (is_keyboard_master() && should_report()) {
+    //     // modify mouse report by PMW3360 motion.
+    //     motion_to_mouse(&keyball.this_motion, &rep, is_keyboard_left(), keyball.scroll_mode);
+    //     motion_to_mouse(&keyball.that_motion, &rep, !is_keyboard_left(), keyball.scroll_mode ^ keyball.this_have_ball);
+    //     // store mouse report for OLED.
+    //     keyball.last_mouse = rep;
+    // }
+    // return rep;
+
+    if (should_report()) {
+        bool is_left = is_keyboard_left();           // 自分が左側か？
+        bool reverse = keyball_get_scroll_reverse(); // スクロールレイヤーか？
+
+        bool this_is_scroll = (reverse ^ is_left);
+        bool that_is_scroll = (reverse ^ !is_left);
+
+        motion_to_mouse(&keyball.this_motion, &rep, is_left, this_is_scroll);
+        motion_to_mouse(&keyball.that_motion, &rep, !is_left, that_is_scroll);
+
+    keyball.last_mouse = rep;
+}
 }
 
 //////////////////////////////////////////////////////////////////////////////
