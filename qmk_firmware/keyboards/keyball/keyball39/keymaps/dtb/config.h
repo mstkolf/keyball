@@ -40,6 +40,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define AUTO_MOUSE_DEFAULT_LAYER 1
 
 #define KEYBALL_SCROLLBALL_INHIVITOR 0
-#define KEYBALL_SCROLLSNAP_ENABLE 0
+#define KEYBALL_SCROLLSNAP_ENABLE 2
 //#define KEYBALL_SCROLLSNAP_TENSION_THRESHOLD 0
 //#define KEYBALL_SCROLLSNAP_RESET_TIMER 0
