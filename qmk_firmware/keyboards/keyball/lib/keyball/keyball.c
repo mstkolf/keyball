@@ -293,7 +293,6 @@ report_mouse_t pointing_device_driver_get_report(report_mouse_t rep) {
     //     // store mouse report for OLED.
     //     keyball.last_mouse = rep;
     // }
-    // return rep;
 
     if (is_keyboard_master() && should_report()) {
         bool is_left = is_keyboard_left();
@@ -306,9 +305,9 @@ report_mouse_t pointing_device_driver_get_report(report_mouse_t rep) {
     
         motion_to_mouse(&keyball.this_motion, &rep, is_left, this_is_scroll);
         motion_to_mouse(&keyball.that_motion, &rep, !is_left, that_is_scroll);
-    
         keyball.last_mouse = rep;
     }
+    return rep;
 }
 
 //////////////////////////////////////////////////////////////////////////////
